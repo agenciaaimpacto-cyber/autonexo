@@ -47,6 +47,14 @@ Igual que con Seguros, la idea es que un sitio simple sea la capa de confianza p
 - **No se exponen los números internos de comisión** (100k/150k/2%) en el sitio público — esa es información del negocio de Danny con la automotora, no algo que el cliente necesite ver.
 - **Sin casos reales todavía** (recién parte) — la landing es de captación/validación, no de prueba social. Agregar casos reales cuando existan los primeros cierres.
 
+## Regla de contenido importante (corregida el 26 de agosto de 2026)
+Al armar la primera versión del sitio se colaron dos afirmaciones que no son precisas y que se corrigieron después de que Danny las revisara:
+- **El precio no lo pone el dueño del auto unilateralmente — se negocia.** Nunca escribir "tú pones/decides el precio". Usar "conversamos el precio" o "negociamos juntos el precio".
+- **El proceso no es 100% online ni "sin oficina".** El contacto y seguimiento son por WhatsApp, pero la parte final — ver o mostrar el vehículo, y cerrar la venta/compra — siempre se hace en persona, en la automotora. Nunca decir "100% por WhatsApp", "sin oficina de por medio" ni "sin que muevas un dedo". En vez de esconder este paso, se enmarca como algo positivo: la visita presencial es **por seguridad de ambas partes** (comprador y vendedor), no una molestia ni una limitación.
+- **No nombrar una ciudad específica de automotora al describir el mecanismo general** (ej. evitar "el cierre se hace en la automotora en Alerce" en textos como la descripción de la fanpage de Facebook, que debe servir igual si más adelante se suma Punta Arenas u otra ciudad). Mencionar Alerce está bien cuando se habla de dónde opera Danny hoy (ej. el eyebrow del sitio, el footer), pero no al explicar la mecánica de "cómo funciona" de forma que quede atada a una sola ciudad/automotora.
+
+Aplica el mismo espíritu que la regla ya existente en Danny Mera Seguros de no prometer algo que después no se cumple tal cual (ahí es con plazos de devolución, acá es con el precio y con el proceso 100% remoto).
+
 ## Cómo seguir
 Al abrir una sesión de Claude Code en esta carpeta, este archivo da el contexto — se puede pedir directamente "seguimos con el proyecto de autos" y continuar desde acá. Si Danny confirma nombre de marca, si quiere nombrar la automotora, o si el número de WhatsApp cambia, actualizar este archivo.
 
