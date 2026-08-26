@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experimento de estilo — AutoDirecto (referencia Mercury)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --onyx-canvas: #171721;
+    --graphite-card: #1e1e2a;
+    --obsidian-button: #272735;
+    --slate-border: #70707d;
+    --mist-border: #e2e3ed;
+    --ash-text: #c3c3cc;
+    --ivory-text: #ededf3;
+    --cobalt: #5266eb;
+    --pure-white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--onyx-canvas);
+    color: var(--ivory-text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  .stage { min-height: 100vh; display: flex; flex-direction: column; }
+
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px; flex-wrap: wrap; gap: 12px;
+  }
+  @media (min-width: 760px) { header { padding: 20px 40px; } }
+  .logo { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 480; letter-spacing: 0.01em; }
+  .logo .mark {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 1.5px solid var(--ivory-text); position: relative;
+  }
+  .logo .mark::after {
+    content: ''; position: absolute; inset: 5px; border-radius: 50%; border: 1.5px solid var(--ivory-text);
+  }
+  nav.links { display: none; align-items: center; gap: 6px; }
+  nav.links a {
+    color: var(--ivory-text); text-decoration: none; font-size: 16px; padding: 10px 20px; border-radius: 40px;
+  }
+  nav.links a:hover { background: var(--obsidian-button); }
+  @media (min-width: 760px) { nav.links { display: flex; } }
+  .btn-cobalt {
+    background: var(--cobalt); color: var(--pure-white); font-size: 16px; border: none;
+    padding: 12px 24px; border-radius: 32px; text-decoration: none; font-weight: 400; white-space: nowrap;
+  }
+  .btn-ghost {
+    background: transparent; color: var(--ivory-text); font-size: 16px; border: 1px solid var(--ivory-text);
+    padding: 10px 20px; border-radius: 40px; text-decoration: none; white-space: nowrap;
+  }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+
+  .hero {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 40px 24px 24px; text-align: center; position: relative;
+  }
+  .eyebrow { font-size: 14px; color: var(--ash-text); letter-spacing: 0.07px; margin-bottom: 20px; }
+  h1 {
+    font-size: 56px; font-weight: 480; line-height: 1.12; letter-spacing: 0.01em;
+    color: var(--pure-white); max-width: 760px;
+  }
+  h1 .accent { color: var(--cobalt); }
+  .sub { font-size: 18px; font-weight: 480; color: var(--ivory-text); max-width: 520px; margin: 20px auto 0; }
+
+  .cta-row { display: flex; gap: 12px; margin-top: 32px; }
+
+  .car-wrap { position: relative; margin: 48px auto 8px; width: min(640px, 88vw); perspective: 900px; }
+  .car-float { animation: float 4.5s ease-in-out infinite; }
+  svg.car {
+    position: relative; z-index: 2; width: 100%; height: auto; display: block;
+    transform-style: preserve-3d; transition: transform .25s ease-out; will-change: transform;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(-0.6deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .car-float { animation: none; } }
+
+  .eyebrow, h1, .sub, .cta-row, .car-wrap { opacity: 0; animation: rise .7s ease-out forwards; }
+  .eyebrow { animation-delay: .05s; }
+  h1 { animation-delay: .15s; }
+  .sub { animation-delay: .25s; }
+  .cta-row { animation-delay: .35s; }
+  .car-wrap { animation-delay: .45s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  section.wrap { max-width: 1200px; margin: 0 auto; padding: 72px 40px; width: 100%; }
+  .cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 760px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  .card {
+    background: var(--graphite-card); border-radius: 12px; padding: 32px;
+  }
+  .card h3 { font-size: 24px; font-weight: 480; letter-spacing: 0.015em; color: var(--pure-white); margin-bottom: 10px; }
+  .card p { font-size: 16px; line-height: 1.5; color: var(--ivory-text); }
+
+  footer {
+    padding: 24px 40px; text-align: center; font-size: 12px; color: var(--ash-text); letter-spacing: 0.01em;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <header>
+    <div class="logo"><span class="mark"></span> AutoDirecto</div>
+    <nav class="links">
+      <a href="#vender">Vender</a>
+      <a href="#comprar">Comprar</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn-cobalt" href="https://wa.me/56957938503?text=Hola%20Danny%2C%20quiero%20vender%20mi%20auto%20en%20consignaci%C3%B3n" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <span class="eyebrow">Consignación de autos · Alerce, Puerto Montt</span>
+    <h1>Tu auto, vendido<br><span class="accent">al mejor precio</span></h1>
+    <p class="sub">Tú pones el precio que quieres recibir. Nosotros conseguimos el comprador — respaldado por una automotora establecida en Alerce.</p>
+
+    <div class="cta-row">
+      <a class="btn-cobalt" href="https://wa.me/56957938503?text=Hola%20Danny%2C%20quiero%20vender%20mi%20auto%20en%20consignaci%C3%B3n" target="_blank" rel="noopener">Vender mi auto</a>
+      <a class="btn-ghost" href="https://wa.me/56957938503?text=Hola%20Danny%2C%20quiero%20informaci%C3%B3n%20para%20comprar%20un%20auto" target="_blank" rel="noopener">Quiero comprar</a>
+    </div>
+
+    <div class="car-wrap">
+     <div class="car-float">
+      <svg class="car" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ededf3"/>
+            <stop offset="55%" stop-color="#b7b7c4"/>
+            <stop offset="100%" stop-color="#4a4a58"/>
+          </linearGradient>
+          <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#2a2a38"/>
+            <stop offset="100%" stop-color="#171721"/>
+          </linearGradient>
+          <radialGradient id="groundGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#000000" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <ellipse cx="340" cy="258" rx="240" ry="16" fill="url(#groundGrad)"/>
+
+        <!-- body -->
+        <path d="M62,206
+                 C62,190 74,178 92,176
+                 L152,174
+                 C162,136 186,104 218,92
+                 C244,82 270,78 300,78
+                 L362,78
+                 C398,78 432,92 456,118
+                 L482,150
+                 L524,153
+                 C550,155 568,170 572,192
+                 C574,202 566,210 555,210
+                 L534,210
+                 A44,44 0 1 0 446,210
+                 L256,210
+                 A44,44 0 1 0 166,210
+                 L98,210
+                 C78,210 62,208 62,206 Z"
+              fill="url(#bodyGrad)" stroke="#171721" stroke-width="3"/>
+
+        <!-- cabin glass -->
+        <path d="M166,168
+                 C176,136 196,110 222,98
+                 C244,89 268,86 294,86
+                 L358,86
+                 C388,86 416,98 436,120
+                 L458,148
+                 L166,168 Z"
+              fill="url(#glassGrad)" stroke="#171721" stroke-width="2"/>
+        <line x1="308" y1="88" x2="300" y2="166" stroke="#171721" stroke-width="3"/>
+        <line x1="196" y1="150" x2="440" y2="138" stroke="#ededf3" stroke-width="2" opacity="0.3"/>
+
+        <!-- beltline crease -->
+        <path d="M100,176 L520,155" stroke="#171721" stroke-width="1.5" opacity="0.4"/>
+
+        <!-- door handle -->
+        <rect x="330" y="172" width="22" height="5" rx="2.5" fill="#171721" opacity="0.55"/>
+
+        <!-- headlight / taillight -->
+        <path d="M556,190 C566,190 572,196 572,203 C572,208 566,210 558,209 L546,204 Z" fill="#ededf3"/>
+        <rect x="66" y="188" width="16" height="10" rx="3" fill="#5266eb"/>
+
+        <!-- mirror -->
+        <path d="M204,120 C198,118 193,121 193,127 C193,132 198,134 204,131 Z" fill="#171721"/>
+
+        <!-- front wheel -->
+        <g style="transform-origin: 210px 222px;">
+          <circle cx="210" cy="222" r="40" fill="#111119"/>
+          <circle cx="210" cy="222" r="40" fill="none" stroke="#171721" stroke-width="2"/>
+          <circle cx="210" cy="222" r="18" fill="none" stroke="#ededf3" stroke-width="2.5"/>
+          <circle cx="210" cy="222" r="4" fill="#ededf3"/>
+          <line x1="210" y1="208" x2="210" y2="236" stroke="#ededf3" stroke-width="2"/>
+          <line x1="196" y1="222" x2="224" y2="222" stroke="#ededf3" stroke-width="2"/>
+        </g>
+
+        <!-- rear wheel -->
+        <g style="transform-origin: 490px 222px;">
+          <circle cx="490" cy="222" r="40" fill="#111119"/>
+          <circle cx="490" cy="222" r="40" fill="none" stroke="#171721" stroke-width="2"/>
+          <circle cx="490" cy="222" r="18" fill="none" stroke="#ededf3" stroke-width="2.5"/>
+          <circle cx="490" cy="222" r="4" fill="#ededf3"/>
+          <line x1="490" y1="208" x2="490" y2="236" stroke="#ededf3" stroke-width="2"/>
+          <line x1="476" y1="222" x2="504" y2="222" stroke="#ededf3" stroke-width="2"/>
+        </g>
+      </svg>
+     </div>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="cards">
+      <div class="card">
+        <h3>Consignación</h3>
+        <p>Tú decides cuánto quieres recibir. Nosotros nos encargamos de encontrar comprador a través de la automotora en Alerce, sin costo de gestión para ti.</p>
+      </div>
+      <div class="card">
+        <h3>Compra tu próximo auto</h3>
+        <p>Al contado o con crédito, te mostramos opciones disponibles y te acompañamos en todo el proceso, 100% por WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Danny Mera · Alerce, Puerto Montt · +56 9 5793 8503</footer>
+</div>
+
+<script>
+  var carWrap = document.querySelector('.car-wrap');
+  var car = document.querySelector('svg.car');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches === false) {
+    carWrap.addEventListener('mousemove', function (e) {
+      var rect = carWrap.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      car.style.transform = 'rotateX(' + (y * -8) + 'deg) rotateY(' + (x * 10) + 'deg)';
+    });
+    carWrap.addEventListener('mouseleave', function () {
+      car.style.transform = '';
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo de técnicas — botón magnético, texto en scroll, tarjetas apiladas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-dark: #0F3D3E; --teal: #1B6B63; --teal-light: #E8F3F1;
+    --gold: #C9A227; --gold-deep: #A6841E; --paper: #FAFAF7;
+    --ink: #16211E; --ink-dim: #5B6963; --line: #DCE6E3;
+    --whatsapp: #25D366; --whatsapp-deep: #1DA851;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Inter', sans-serif; line-height: 1.55; }
+  .serif { font-family: 'Fraunces', serif; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  section { padding: 90px 0; }
+  .tag {
+    font-family: 'Inter', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--teal); margin-bottom: 10px; display: block;
+  }
+  h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 30px; color: var(--teal-dark); margin-bottom: 16px; }
+  p.note { color: var(--ink-dim); font-size: 14.5px; max-width: 520px; }
+
+  /* --- 1. magnetic button --- */
+  .magnet-demo { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+  .magnet-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--whatsapp); color: #fff; font-weight: 600; font-size: 16px;
+    padding: 18px 34px; border-radius: 999px; text-decoration: none;
+    box-shadow: 0 10px 26px rgba(37,211,102,0.32);
+    will-change: transform;
+  }
+  .magnet-zone { padding: 60px; border: 1px dashed var(--line); border-radius: 24px; }
+
+  /* --- 2. scroll character reveal --- */
+  .reveal-text {
+    font-family: 'Fraunces', serif; font-size: clamp(22px, 3.4vw, 34px); line-height: 1.35;
+    color: var(--ink); max-width: 620px; margin: 0 auto;
+  }
+  .reveal-text span { transition: opacity .05s linear; }
+
+  /* --- 3. stacked cards --- */
+  .stack-wrapper { height: 92vh; position: relative; }
+  .stack-wrapper:last-child { height: 60vh; }
+  .stack-card {
+    position: sticky; top: 90px;
+    background: var(--teal-dark); color: var(--paper); border-radius: 28px;
+    padding: 40px; max-width: 640px; margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(15,61,62,0.25);
+    transform-origin: top center;
+    will-change: transform;
+  }
+  .stack-card .num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 54px; color: var(--gold); margin-bottom: 12px; }
+  .stack-card h3 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 10px; }
+  .stack-card p { color: rgba(250,250,247,0.8); font-size: 15px; }
+
+  footer { padding: 60px 0 100px; text-align: center; color: var(--ink-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<section>
+  <div class="wrap magnet-demo">
+    <div>
+      <span class="tag">Técnica 1 — botón magnético</span>
+      <h2>Acerca el mouse al botón</h2>
+      <p class="note">El botón "persigue" levemente el cursor cuando te acercas, y vuelve suave a su lugar cuando te alejas. En mobile no tiene efecto (no hay cursor) — ahí simplemente es un botón normal.</p>
+    </div>
+    <div class="magnet-zone">
+      <a class="magnet-btn" id="magnetBtn" href="#">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="tag">Técnica 2 — texto que se revela con el scroll</span>
+    <h2 style="margin-bottom:36px;">Baja lento y mira el párrafo</h2>
+    <p class="reveal-text" id="revealText">Tú pones el precio que quieres recibir por tu auto. Nosotros nos encargamos de conseguir el comprador, a través de una automotora establecida en Alerce.</p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap" style="margin-bottom:40px;">
+    <span class="tag">Técnica 3 — tarjetas que se apilan</span>
+    <h2>Sigue bajando</h2>
+    <p class="note">Cada tarjeta queda pegada arriba mientras la siguiente sube y la empuja, encogiéndola levemente — así se nota que hay una detrás de otra, no solo una lista.</p>
+  </div>
+
+  <div class="stack-wrapper">
+    <div class="stack-card">
+      <div class="num">01</div>
+      <h3>Cuéntanos de tu auto</h3>
+      <p>Marca, modelo, año, kilometraje, y el precio que te gustaría recibir tú por el auto.</p>
+    </div>
+  </div>
+  <div class="stack-wrapper">
+    <div class="stack-card">
+      <div class="num">02</div>
+      <h3>Se deja en consignación</h3>
+      <p>La automotora en Alerce respalda la publicación y la venta — tu auto queda expuesto a compradores reales.</p>
+    </div>
+  </div>
+  <div class="stack-wrapper">
+    <div class="stack-card">
+      <div class="num">03</div>
+      <h3>Se vende y recibes tu monto</h3>
+      <p>Cuando aparece el comprador, se cierra la venta y tú recibes el monto que acordamos al inicio.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Demo de técnicas — no es una página final, solo referencia visual.</footer>
+
+<script>
+  // --- 1. Magnetic button ---
+  (function () {
+    var btn = document.getElementById('magnetBtn');
+    var padding = 60, strength = 4;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    document.addEventListener('mousemove', function (e) {
+      var rect = btn.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      var dx = e.clientX - cx;
+      var dy = e.clientY - cy;
+      var dist = Math.hypot(dx, dy);
+      var maxDist = Math.max(rect.width, rect.height) / 2 + padding;
+      if (dist < maxDist) {
+        btn.style.transition = 'transform .3s ease-out';
+        btn.style.transform = 'translate3d(' + (dx / strength) + 'px,' + (dy / strength) + 'px,0)';
+      } else {
+        btn.style.transition = 'transform .6s ease-in-out';
+        btn.style.transform = 'translate3d(0,0,0)';
+      }
+    });
+  })();
+
+  // --- 2. Character reveal on scroll ---
+  (function () {
+    var el = document.getElementById('revealText');
+    var text = el.textContent;
+    el.innerHTML = '';
+    var spans = [];
+    for (var i = 0; i < text.length; i++) {
+      var span = document.createElement('span');
+      span.textContent = text[i];
+      span.style.opacity = '0.15';
+      el.appendChild(span);
+      spans.push(span);
+    }
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function update() {
+      var rect = el.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var start = vh * 0.85, end = vh * 0.35;
+      var progress = (start - rect.top) / (start - end);
+      progress = Math.max(0, Math.min(1, progress));
+      var total = spans.length;
+      for (var i = 0; i < total; i++) {
+        var charProgress = Math.max(0, Math.min(1, (progress * total - i)));
+        spans[i].style.opacity = 0.15 + 0.85 * charProgress;
+      }
+      if (!reduced) requestAnimationFrame(update);
+    }
+    if (reduced) {
+      spans.forEach(function (s) { s.style.opacity = 1; });
+    } else {
+      requestAnimationFrame(update);
+    }
+  })();
+
+  // --- 3. Sticky stacking cards ---
+  (function () {
+    var cards = document.querySelectorAll('.stack-card');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    function update() {
+      var vh = window.innerHeight;
+      cards.forEach(function (card, i) {
+        var wrapper = card.parentElement;
+        var rect = wrapper.getBoundingClientRect();
+        var range = Math.max(rect.height - vh, 1);
+        var progress = 0;
+        if (rect.top <= 90) {
+          progress = Math.min(1, (90 - rect.top) / range);
+        }
+        var targetScale = 1 - (cards.length - 1 - i) * 0.05;
+        var scale = 1 - progress * (1 - targetScale);
+        card.style.transform = 'scale(' + scale + ')';
+      });
+      requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  })();
+</script>
+
+</body>
+</html>
