@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo funciona la consignación — AutoDirecto</title>
+<meta name="description" content="Vende tu auto en consignación con AutoDirecto: conversamos el precio juntos, nosotros encontramos comprador, y tú no pagas nada por la gestión.">
+<link rel="icon" href="assets/logo-autodirecto-120.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-dark: #04152A;
+    --navy: #0B2038;
+    --navy-light: #E7ECF1;
+    --orange: #F35501;
+    --orange-deep: #C74506;
+    --paper: #FAFAF7;
+    --ink: #14202E;
+    --ink-dim: #5B6670;
+    --line: #DDE3E8;
+    --whatsapp: #25D366;
+    --whatsapp-deep: #1DA851;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Fraunces', serif; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  header.site {
+    background: var(--navy-dark);
+    color: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgba(250,250,247,0.1);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; white-space: nowrap; text-decoration: none; }
+  .brand img { width: 34px; height: 34px; border-radius: 50%; }
+  .brand span { color: var(--orange); }
+  nav.links { display: none; gap: 22px; font-size: 14px; font-weight: 500; }
+  nav.links a { text-decoration: none; color: rgba(250,250,247,0.85); transition: color .15s ease; }
+  nav.links a:hover { color: var(--orange); }
+  @media (min-width: 760px) { nav.links { display: flex; } }
+  .btn-nav-wa {
+    background: var(--whatsapp); color: #fff; font-size: 13px; font-weight: 600;
+    padding: 9px 16px; border-radius: 999px; text-decoration: none; white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-nav-wa:hover { background: var(--whatsapp-deep); }
+
+  .hero { padding: 48px 24px 8px; max-width: 780px; margin: 0 auto; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--orange-deep); margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 38px; line-height: 1.15;
+    letter-spacing: -0.01em; color: var(--navy-dark); margin-bottom: 18px;
+  }
+  .hero p.lead { font-size: 17px; color: var(--ink-dim); max-width: 620px; margin-bottom: 26px; }
+  .hero p.lead strong { color: var(--ink); }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px; background: var(--whatsapp); color: #fff;
+    font-weight: 600; font-size: 16px; padding: 14px 26px; border-radius: 999px; text-decoration: none;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.28);
+  }
+  .btn-primary:hover { background: var(--whatsapp-deep); }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin-top: 36px;
+  }
+  @media (min-width: 640px) { .hero-stats { grid-template-columns: repeat(3, 1fr); } }
+  .hstat { background: #fff; padding: 22px 20px; }
+  .hstat-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--navy-dark); margin-bottom: 4px; }
+  .hstat-label { font-size: 12.5px; color: var(--ink-dim); line-height: 1.4; }
+
+  section { padding: 40px 0; }
+  h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; color: var(--navy-dark); margin-bottom: 20px; }
+
+  .steps { display: flex; flex-direction: column; gap: 2px; background: var(--line); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+  .step { display: flex; gap: 16px; background: #fff; padding: 20px; align-items: flex-start; }
+  .step .num {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--orange-deep);
+    width: 28px; flex-shrink: 0;
+  }
+  .step .step-title { font-weight: 600; font-size: 15px; margin-bottom: 3px; }
+  .step .step-text { font-size: 14px; color: var(--ink-dim); }
+
+  .callout {
+    background: var(--navy-dark); color: var(--paper); border-radius: 18px; padding: 32px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
+  }
+  .callout h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 21px; margin-bottom: 6px; }
+  .callout p { color: rgba(250,250,247,0.75); font-size: 14px; max-width: 460px; }
+  .callout .btn-primary { flex-shrink: 0; }
+
+  footer {
+    background: var(--navy-dark); color: rgba(250,250,247,0.7); margin-top: 40px; padding: 40px 24px 90px;
+  }
+  footer .wrap { max-width: 1100px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; font-size: 14px; }
+  footer a { text-decoration: none; color: rgba(250,250,247,0.85); }
+  footer a:hover { color: var(--orange); }
+  footer .brand { color: var(--paper); margin-bottom: 8px; }
+
+  .wa-float {
+    position: fixed; bottom: 20px; right: 20px; background: var(--whatsapp); color: #fff;
+    width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25); z-index: 60; text-decoration: none;
+  }
+  .wa-float:hover { background: var(--whatsapp-deep); }
+  .wa-float svg { width: 28px; height: 28px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index.html"><img src="assets/logo-autodirecto-120.png" alt="AutoDirecto">Auto<span>Directo</span></a>
+    <nav class="links">
+      <a href="index.html#vehiculos">Vehículos disponibles</a>
+      <a href="consignacion.html">Vender mi auto</a>
+    </nav>
+    <a class="btn-nav-wa" href="https://wa.me/56957938503?text=Hola%2C%20quiero%20vender%20mi%20auto%20en%20consignaci%C3%B3n" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <span class="eyebrow">Vender mi auto</span>
+    <h1>Vende tu auto sin vueltas, en consignación</h1>
+    <p class="lead">Conversamos el precio juntos y nos encargamos de encontrarte comprador. <strong>Sin costo de gestión para ti.</strong> Todo parte por WhatsApp — la parte final, ver o mostrar el auto, se hace siempre en un local establecido, por tu seguridad.</p>
+    <a class="btn-primary" href="https://wa.me/56957938503?text=Hola%2C%20quiero%20vender%20mi%20auto%20en%20consignaci%C3%B3n" target="_blank" rel="noopener">
+      Escríbeme por WhatsApp
+    </a>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num">$0</div>
+        <div class="hstat-label">Costo de gestión para consignar tu auto</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">WhatsApp</div>
+        <div class="hstat-label">Así parte todo el proceso, de principio a fin</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">En persona</div>
+        <div class="hstat-label">El cierre final, siempre en un local establecido, por tu seguridad</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="como-funciona">
+      <h2>Cómo funciona la consignación</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <div>
+            <div class="step-title">Me cuentas del auto y conversamos el precio</div>
+            <div class="step-text">Marca, modelo, año, kilometraje, estado, y qué precio te gustaría negociar por el auto.</div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <div>
+            <div class="step-title">Se deja en consignación</div>
+            <div class="step-text">Tu auto queda publicado y expuesto a compradores reales, con todo el respaldo de la gestión.</div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <div>
+            <div class="step-title">Se vende y recibes el monto acordado</div>
+            <div class="step-text">Cuando aparece el comprador, se coordina una visita a un local establecido para cerrar la venta — ahí recibes el monto acordado, por tu seguridad y la del comprador.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="confianza">
+      <div class="callout">
+        <div>
+          <h3>No partes solo</h3>
+          <p>Cada venta queda respaldada de principio a fin: todo claro, todo parte por WhatsApp, y el cierre final siempre se hace en un local establecido, por tu seguridad.</p>
+        </div>
+        <a class="btn-primary" href="https://wa.me/56957938503?text=Hola%2C%20quiero%20vender%20mi%20auto%20en%20consignaci%C3%B3n" target="_blank" rel="noopener">Escríbeme</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand serif" style="font-size:18px;">Auto<span style="color:var(--orange)">Directo</span></div>
+      <p>Compra y venta de autos usados — Puerto Montt y Punta Arenas</p>
+    </div>
+    <div>
+      <div>+56 9 5793 8503</div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/56957938503?text=Hola%2C%20quiero%20vender%20mi%20auto%20en%20consignaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.55 3.7-8.24 8.25-8.24m-4.52 4.7c-.16 0-.42.06-.64.31s-.85.83-.85 2.02.87 2.35.99 2.51c.12.16 1.7 2.72 4.19 3.71 2.07.83 2.49.66 2.94.62.45-.04 1.46-.6 1.66-1.17.21-.58.21-1.08.15-1.18-.06-.1-.22-.16-.46-.28s-1.46-.72-1.68-.8c-.23-.08-.39-.12-.56.12s-.65.8-.8.97c-.15.16-.29.19-.55.06-.26-.12-1.08-.4-2.06-1.27-.76-.68-1.28-1.51-1.42-1.77-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.24-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43z"/></svg>
+</a>
+
+</body>
+</html>

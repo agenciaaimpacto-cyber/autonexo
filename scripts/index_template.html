@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autos disponibles — AutoDirecto</title>
-<meta name="description" content="Autos usados disponibles con AutoDirecto en Puerto Montt. Fotos, precio, año y kilometraje — contacto directo por WhatsApp.">
+<title>AutoDirecto — Vende o compra tu auto en Puerto Montt y Punta Arenas</title>
+<meta name="description" content="Vende tu auto en consignación sin costo de gestión, o encuentra tu próximo auto entre los vehículos disponibles ahora en Puerto Montt y Punta Arenas. Contacto directo por WhatsApp.">
 <link rel="icon" href="assets/logo-autodirecto-120.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@
     margin: 0 auto;
     gap: 16px;
   }
-  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; white-space: nowrap; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; white-space: nowrap; text-decoration: none; }
   .brand img { width: 34px; height: 34px; border-radius: 50%; }
   .brand span { color: var(--orange); }
   nav.links { display: none; gap: 22px; font-size: 14px; font-weight: 500; }
@@ -69,21 +69,34 @@
   }
   .btn-nav-wa:hover { background: var(--whatsapp-deep); }
 
-  .hero { padding: 44px 24px 8px; max-width: 1100px; margin: 0 auto; }
+  /* Hero */
+  .hero-banner { position: relative; }
+  .hero-img { width: 100%; max-height: 480px; object-fit: cover; display: block; }
+  .hero-cta-wrap {
+    background: var(--navy-dark); padding: 22px 24px 30px; text-align: center;
+  }
+  .hero-cta-wrap p { color: rgba(250,250,247,0.8); font-size: 15px; max-width: 560px; margin: 0 auto 16px; }
+  .btn-hero {
+    display: inline-flex; align-items: center; gap: 10px; background: var(--orange); color: #fff;
+    font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 999px; text-decoration: none;
+    box-shadow: 0 8px 24px rgba(243,85,1,0.35);
+  }
+  .btn-hero:hover { background: var(--orange-deep); }
+
+  section { padding: 44px 0; }
+  .section-head { margin-bottom: 24px; }
   .eyebrow {
     font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--orange-deep); margin-bottom: 12px;
+    text-transform: uppercase; color: var(--orange-deep); margin-bottom: 10px;
     display: inline-flex; align-items: center; gap: 8px;
   }
-  h1 {
-    font-family: 'Fraunces', serif; font-weight: 700; font-size: 34px; line-height: 1.15;
-    letter-spacing: -0.01em; color: var(--navy-dark); margin-bottom: 10px;
-  }
-  .hero p.lead { font-size: 16px; color: var(--ink-dim); max-width: 620px; }
+  h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; color: var(--navy-dark); margin-bottom: 6px; }
+  p.section-sub { font-size: 15px; color: var(--ink-dim); max-width: 620px; }
 
-  section#grid-section { padding: 28px 0 60px; }
+  /* Vehículos */
+  section#vehiculos { padding-top: 48px; }
 
-  .city-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .city-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 8px; }
   .city-tab {
     font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px;
     padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line);
@@ -92,6 +105,15 @@
   .city-tab:hover { border-color: var(--orange); color: var(--navy-dark); }
   .city-tab.active { background: var(--navy-dark); border-color: var(--navy-dark); color: #fff; }
   .city-tab .count { opacity: .7; font-weight: 500; }
+
+  .city-group { margin-top: 32px; }
+  .city-heading {
+    display: flex; align-items: center; gap: 10px; font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 19px; color: var(--navy-dark); margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--orange);
+  }
+  .city-heading svg { width: 18px; height: 18px; color: var(--orange-deep); flex-shrink: 0; }
+  .city-heading .count { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; color: var(--ink-dim); }
 
   .car-city {
     font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em;
@@ -130,6 +152,18 @@
     box-shadow: 0 6px 20px rgba(37,211,102,0.28);
   }
   .btn-primary:hover { background: var(--whatsapp-deep); }
+
+  /* Venta teaser */
+  .sell-callout {
+    background: var(--navy-dark); color: var(--paper); border-radius: 18px; padding: 32px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
+  }
+  .sell-callout h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; margin-bottom: 8px; }
+  .sell-callout p { color: rgba(250,250,247,0.75); font-size: 14.5px; max-width: 480px; }
+  .sell-callout .btn-secondary {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 600;
+    font-size: 15px; text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 3px;
+  }
 
   footer {
     background: var(--navy-dark); color: rgba(250,250,247,0.7); margin-top: 20px; padding: 40px 24px 90px;
@@ -176,30 +210,46 @@
 
 <header class="site">
   <div class="nav-row">
-    <a class="brand" href="index.html"><img src="assets/logo-autodirecto-120.png" alt="AutoDirecto"><span>Auto</span>Directo</a>
+    <a class="brand" href="index.html"><img src="assets/logo-autodirecto-120.png" alt="AutoDirecto">Auto<span>Directo</span></a>
     <nav class="links">
-      <a href="index.html#vender">Vender mi auto</a>
-      <a href="index.html#comprar">Comprar un auto</a>
-      <a href="autos.html">Autos disponibles</a>
+      <a href="#vehiculos">Vehículos disponibles</a>
+      <a href="consignacion.html">Vender mi auto</a>
     </nav>
     <a class="btn-nav-wa" href="https://wa.me/56957938503?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20autos" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </header>
 
 <main>
-  <div class="hero">
-    <span class="eyebrow">AutoDirecto · Puerto Montt</span>
-    <h1>Autos disponibles ahora</h1>
-    <p class="lead">Revisa fotos, año, kilometraje y precio de cada auto. Escríbenos por WhatsApp para coordinar una visita y ver el auto en persona.</p>
+  <div class="hero-banner">
+    <img class="hero-img" src="assets/hero-home.jpg" alt="AutoDirecto — vende o compra tu auto sin complicaciones">
+    <div class="hero-cta-wrap">
+      <p>Revisa los autos disponibles ahora mismo, con fotos, año, kilometraje y precio — o cuéntanos qué auto quieres vender.</p>
+      <a class="btn-hero" href="#vehiculos">Vehículos disponibles ↓</a>
+    </div>
   </div>
 
   <div class="wrap">
-    <section id="grid-section">
+    <section id="vehiculos">
+      <div class="section-head">
+        <span class="eyebrow">AutoDirecto · Puerto Montt y Punta Arenas</span>
+        <h2>Vehículos disponibles ahora</h2>
+        <p class="section-sub">Fotos, año, kilometraje y precio de cada auto. Escríbenos por WhatsApp para coordinar una visita y ver el auto en persona.</p>
+      </div>
       <div id="cityTabs" class="city-tabs"></div>
-      <div id="grid" class="grid"></div>
+      <div id="gridContainer"></div>
       <div id="empty" class="empty-state" style="display:none;">
         <p>Estamos actualizando el inventario — pronto vas a ver aquí los autos disponibles.</p>
         <a class="btn-primary" href="https://wa.me/56957938503?text=Hola%2C%20quiero%20saber%20qu%C3%A9%20autos%20tienen%20disponibles" target="_blank" rel="noopener">Pregúntanos por WhatsApp</a>
+      </div>
+    </section>
+
+    <section id="vender">
+      <div class="sell-callout">
+        <div>
+          <h3>¿Tienes un auto para vender?</h3>
+          <p>Lo dejas en consignación, conversamos el precio juntos y nos encargamos de encontrarte comprador — sin costo de gestión para ti.</p>
+        </div>
+        <a class="btn-secondary" href="consignacion.html">Cómo funciona la consignación →</a>
       </div>
     </section>
   </div>
@@ -208,8 +258,8 @@
 <footer>
   <div class="wrap">
     <div>
-      <div class="brand serif" style="font-size:18px;"><span style="color:var(--orange)">Auto</span>Directo</div>
-      <p>Compra y venta de autos usados — Puerto Montt</p>
+      <div class="brand serif" style="font-size:18px;">Auto<span style="color:var(--orange)">Directo</span></div>
+      <p>Compra y venta de autos usados — Puerto Montt y Punta Arenas</p>
     </div>
     <div>
       <div>+56 9 5793 8503</div>
@@ -244,10 +294,11 @@
 <script id="autos-data" type="application/json">__AUTOS_JSON__</script>
 <script>
   var AUTOS = JSON.parse(document.getElementById('autos-data').textContent);
-  var grid = document.getElementById('grid');
+  var gridContainer = document.getElementById('gridContainer');
   var empty = document.getElementById('empty');
   var cityTabsEl = document.getElementById('cityTabs');
   var ciudadActiva = 'Todas';
+  var PIN_SVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
 
   var ciudades = [];
   AUTOS.forEach(function (auto) {
@@ -268,37 +319,57 @@
     });
   }
 
+  function cardHtml(auto) {
+    var idx = AUTOS.indexOf(auto);
+    var div = document.createElement('div');
+    div.className = 'car-card';
+    div.innerHTML =
+      '<img class="car-cover" src="' + auto.portada + '" alt="' + auto.nombre + '" loading="lazy">' +
+      '<div class="car-body">' +
+        '<div class="car-city">' + auto.ciudad + '</div>' +
+        '<div class="car-name">' + auto.nombre + '</div>' +
+        '<div class="car-meta"><span>' + auto.anio + '</span><span>·</span><span>' + auto.km + '</span></div>' +
+        '<div class="car-price">' + auto.precio + '</div>' +
+        '<div class="car-cta">Ver galería y detalles →</div>' +
+      '</div>';
+    div.addEventListener('click', function () { openLightbox(idx); });
+    return div;
+  }
+
   function renderGrid() {
-    grid.innerHTML = '';
-    var lista = ciudadActiva === 'Todas' ? AUTOS : AUTOS.filter(function (a) { return a.ciudad === ciudadActiva; });
+    gridContainer.innerHTML = '';
 
     if (!AUTOS.length) {
       empty.style.display = 'block';
-      grid.style.display = 'none';
+      gridContainer.style.display = 'none';
       return;
     }
 
+    if (ciudadActiva === 'Todas' && ciudades.length > 1) {
+      ciudades.forEach(function (ciudad) {
+        var lista = AUTOS.filter(function (a) { return a.ciudad === ciudad; });
+        if (!lista.length) return;
+        var group = document.createElement('div');
+        group.className = 'city-group';
+        group.innerHTML = '<div class="city-heading">' + PIN_SVG + ciudad + ' <span class="count">(' + lista.length + ' disponible' + (lista.length === 1 ? '' : 's') + ')</span></div>';
+        var grid = document.createElement('div');
+        grid.className = 'grid';
+        lista.forEach(function (auto) { grid.appendChild(cardHtml(auto)); });
+        group.appendChild(grid);
+        gridContainer.appendChild(group);
+      });
+      return;
+    }
+
+    var lista = ciudadActiva === 'Todas' ? AUTOS : AUTOS.filter(function (a) { return a.ciudad === ciudadActiva; });
     if (!lista.length) {
-      grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;">No hay autos disponibles en ' + ciudadActiva + ' por ahora.</div>';
+      gridContainer.innerHTML = '<div class="empty-state">No hay autos disponibles en ' + ciudadActiva + ' por ahora.</div>';
       return;
     }
-
-    lista.forEach(function (auto) {
-      var idx = AUTOS.indexOf(auto);
-      var card = document.createElement('div');
-      card.className = 'car-card';
-      card.innerHTML =
-        '<img class="car-cover" src="' + auto.portada + '" alt="' + auto.nombre + '" loading="lazy">' +
-        '<div class="car-body">' +
-          '<div class="car-city">' + auto.ciudad + '</div>' +
-          '<div class="car-name">' + auto.nombre + '</div>' +
-          '<div class="car-meta"><span>' + auto.anio + '</span><span>·</span><span>' + auto.km + '</span></div>' +
-          '<div class="car-price">' + auto.precio + '</div>' +
-          '<div class="car-cta">Ver galería y detalles →</div>' +
-        '</div>';
-      card.addEventListener('click', function () { openLightbox(idx); });
-      grid.appendChild(card);
-    });
+    var grid = document.createElement('div');
+    grid.className = 'grid';
+    lista.forEach(function (auto) { grid.appendChild(cardHtml(auto)); });
+    gridContainer.appendChild(grid);
   }
 
   renderTabs();

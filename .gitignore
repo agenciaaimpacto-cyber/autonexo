@@ -8,3 +8,10 @@ vehiculos/
 # de datos/fotos — se mantiene local por si hace falta revisar algo, pero
 # no debe subirse al repo (son fotos pesadas sin optimizar).
 Autodirecto/
+
+# Imagen original (sin optimizar) de la portada del home, provista por Danny
+# el 11 de septiembre de 2026. La versión que usa el sitio es la optimizada
+# en assets/hero-home.jpg.
+negocio autos.png
+
+.DS_Store

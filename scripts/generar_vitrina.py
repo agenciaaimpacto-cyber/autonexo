@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Genera autos.html a partir de las carpetas en vehiculos/.
+Genera index.html (el home, que incluye la vitrina de vehículos) a partir de
+las carpetas en vehiculos/.
 
 La estructura es vehiculos/<Ciudad>/<Auto>/ (dos niveles: primero la ciudad,
 después una subcarpeta por auto — el nombre de esa subcarpeta es el nombre
@@ -13,9 +14,15 @@ Carpetas que empiezan con "." o "_" se ignoran (sirven para notas/plantillas),
 tanto a nivel de ciudad como de auto.
 
 Este script hace una reconstrucción completa cada vez: borra y regenera
-assets/autos/ y autos.html a partir de lo que hay en vehiculos/ en este
+assets/autos/ e index.html a partir de lo que hay en vehiculos/ en este
 momento. Así, si se elimina una carpeta de auto, automáticamente desaparece
 del sitio — no hace falta "avisarle" al script qué cambió.
+
+index.html se genera completo desde scripts/index_template.html (que trae
+el resto del contenido del home — hero, sección de venta, footer — con un
+placeholder __AUTOS_JSON__ donde se inyectan los datos). Para cambiar textos
+o diseño del home fuera del catálogo de autos, edita index_template.html,
+no index.html directamente (se sobreescribe en cada corrida).
 
 Uso: python3 scripts/generar_vitrina.py
 """
@@ -30,8 +37,8 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parent.parent
 VEHICULOS_DIR = ROOT / "vehiculos"
 ASSETS_AUTOS_DIR = ROOT / "assets" / "autos"
-TEMPLATE_PATH = ROOT / "scripts" / "autos_template.html"
-OUTPUT_PATH = ROOT / "autos.html"
+TEMPLATE_PATH = ROOT / "scripts" / "index_template.html"
+OUTPUT_PATH = ROOT / "index.html"
 
 FOTO_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 MAX_DIMENSION = 1600
