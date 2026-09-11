@@ -3,15 +3,17 @@
 # se suben al repo. Ver scripts/generar_vitrina.py y vehiculos/_LEEME.txt.
 vehiculos/
 
-# Volcado original de fotos (WhatsApp/Facebook) desde el que se armó
-# vehiculos/ el 10 de septiembre de 2026. Ya cumplió su función como fuente
-# de datos/fotos — se mantiene local por si hace falta revisar algo, pero
-# no debe subirse al repo (son fotos pesadas sin optimizar).
+# Volcado original de fotos/logo/portada (WhatsApp/Facebook/ChatGPT) desde
+# el que se arma vehiculos/ y los assets de marca. Ya cumplió su función
+# como fuente de datos/fotos — se mantiene local por si hace falta revisar
+# algo, pero no debe subirse al repo (son archivos pesados sin optimizar).
+# Antes se llamaba "Autodirecto/" (borrada por Danny el 11 de septiembre de
+# 2026 al cambiar de marca); ahora es "AutoNexo/".
+AutoNexo/
 Autodirecto/
 
-# Imagen original (sin optimizar) de la portada del home, provista por Danny
-# el 11 de septiembre de 2026. La versión que usa el sitio es la optimizada
-# en assets/hero-home.jpg.
+# Imagen original de portada del home (sin optimizar) — reemplazada el 11 de
+# septiembre por AutoNexo/Portada.png. Ya no se usa, se deja por si acaso.
 negocio autos.png
 
 .DS_Store
