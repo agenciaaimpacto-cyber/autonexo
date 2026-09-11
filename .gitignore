@@ -1,0 +1,10 @@
+# Carpeta madre de fotos originales de autos — vive solo en este Mac.
+# El sitio usa las copias optimizadas generadas en assets/autos/, que sí
+# se suben al repo. Ver scripts/generar_vitrina.py y vehiculos/_LEEME.txt.
+vehiculos/
+
+# Volcado original de fotos (WhatsApp/Facebook) desde el que se armó
+# vehiculos/ el 10 de septiembre de 2026. Ya cumplió su función como fuente
+# de datos/fotos — se mantiene local por si hace falta revisar algo, pero
+# no debe subirse al repo (son fotos pesadas sin optimizar).
+Autodirecto/

@@ -3,22 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Danny Mera Autos — Vende o compra tu auto en Alerce</title>
+<title>AutoDirecto — Vende o compra tu auto en Puerto Montt</title>
 <meta name="description" content="Vende tu auto en consignación sin costo de gestión, o encuentra tu próximo auto con crédito o al contado. Contacto por WhatsApp — cierre seguro en la automotora en Alerce (Puerto Montt).">
+<link rel="icon" href="assets/logo-autodirecto-120.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal-dark: #0F3D3E;
-    --teal: #1B6B63;
-    --teal-light: #E8F3F1;
-    --gold: #C9A227;
-    --gold-deep: #A6841E;
+    --navy-dark: #04152A;
+    --navy: #0B2038;
+    --navy-light: #E7ECF1;
+    --orange: #F35501;
+    --orange-deep: #C74506;
     --paper: #FAFAF7;
-    --ink: #16211E;
-    --ink-dim: #5B6963;
-    --line: #DCE6E3;
+    --ink: #14202E;
+    --ink-dim: #5B6670;
+    --line: #DDE3E8;
     --whatsapp: #25D366;
     --whatsapp-deep: #1DA851;
   }
@@ -38,7 +39,7 @@
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
   header.site {
-    background: var(--teal-dark);
+    background: var(--navy-dark);
     color: var(--paper);
     position: sticky;
     top: 0;
@@ -55,10 +56,10 @@
     gap: 16px;
   }
   .brand { font-family: 'Fraunces', serif; font-weight: 600; font-size: 20px; white-space: nowrap; }
-  .brand span { color: var(--gold); }
+  .brand span { color: var(--orange); }
   nav.links { display: none; gap: 22px; font-size: 14px; font-weight: 500; }
   nav.links a { text-decoration: none; color: rgba(250,250,247,0.85); transition: color .15s ease; }
-  nav.links a:hover { color: var(--gold); }
+  nav.links a:hover { color: var(--orange); }
   @media (min-width: 760px) { nav.links { display: flex; } }
   .btn-nav-wa {
     background: var(--whatsapp); color: #fff; font-size: 13px; font-weight: 600;
@@ -70,15 +71,15 @@
   .hero { padding: 56px 24px 48px; max-width: 780px; margin: 0 auto; text-align: left; }
   .eyebrow {
     font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+    text-transform: uppercase; color: var(--navy); margin-bottom: 14px;
     display: inline-flex; align-items: center; gap: 8px;
   }
-  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); display: inline-block; animation: pulse 2s infinite; }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); display: inline-block; animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
   @media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
   h1 {
     font-family: 'Fraunces', serif; font-weight: 700; font-size: 42px; line-height: 1.12;
-    letter-spacing: -0.01em; color: var(--teal-dark); margin-bottom: 20px;
+    letter-spacing: -0.01em; color: var(--navy-dark); margin-bottom: 20px;
   }
   @media (min-width: 640px) { h1 { font-size: 50px; } }
   .hero p.lead { font-size: 17px; color: var(--ink-dim); max-width: 620px; margin-bottom: 28px; }
@@ -91,8 +92,8 @@
   }
   .btn-primary:hover { background: var(--whatsapp-deep); }
   .btn-secondary {
-    display: inline-flex; align-items: center; gap: 8px; color: var(--teal-dark); font-weight: 600;
-    font-size: 15px; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; margin-left: 22px;
+    display: inline-flex; align-items: center; gap: 8px; color: var(--navy-dark); font-weight: 600;
+    font-size: 15px; text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 2px; margin-left: 22px;
   }
 
   .hero-stats {
@@ -101,12 +102,12 @@
   }
   @media (min-width: 640px) { .hero-stats { grid-template-columns: repeat(3, 1fr); } }
   .hstat { background: #fff; padding: 22px 20px; }
-  .hstat-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; color: var(--teal-dark); margin-bottom: 4px; }
+  .hstat-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; color: var(--navy-dark); margin-bottom: 4px; }
   .hstat-label { font-size: 12.5px; color: var(--ink-dim); line-height: 1.4; }
 
   section { padding: 44px 0; }
   .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
-  h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; color: var(--teal-dark); }
+  h2 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 26px; color: var(--navy-dark); }
   p.section-sub { font-size: 15px; color: var(--ink-dim); max-width: 620px; margin: -12px 0 20px; }
 
   /* Paths: vender / comprar */
@@ -119,9 +120,9 @@
   .path-card .tag {
     font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;
     padding: 4px 10px; border-radius: 999px; display: inline-block; width: fit-content;
-    background: var(--teal-light); color: var(--teal);
+    background: var(--navy-light); color: var(--navy);
   }
-  .path-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 21px; color: var(--teal-dark); }
+  .path-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 21px; color: var(--navy-dark); }
   .path-card p { font-size: 14.5px; color: var(--ink-dim); }
   .path-card .btn-primary { align-self: flex-start; margin-top: 6px; font-size: 14.5px; padding: 11px 20px; }
 
@@ -129,7 +130,7 @@
   .steps { display: flex; flex-direction: column; gap: 2px; background: var(--line); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
   .step { display: flex; gap: 16px; background: #fff; padding: 18px 20px; align-items: flex-start; }
   .step .num {
-    font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--gold-deep);
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--orange-deep);
     width: 28px; flex-shrink: 0;
   }
   .step .step-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
@@ -137,7 +138,7 @@
 
   /* Callout aplica */
   .callout {
-    background: var(--teal-dark); color: var(--paper); border-radius: 18px; padding: 32px;
+    background: var(--navy-dark); color: var(--paper); border-radius: 18px; padding: 32px;
     display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
   }
   .callout h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 21px; margin-bottom: 6px; }
@@ -145,11 +146,11 @@
   .callout .btn-primary { flex-shrink: 0; }
 
   footer {
-    background: var(--teal-dark); color: rgba(250,250,247,0.7); margin-top: 60px; padding: 40px 24px 90px;
+    background: var(--navy-dark); color: rgba(250,250,247,0.7); margin-top: 60px; padding: 40px 24px 90px;
   }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; font-size: 14px; }
   footer a { text-decoration: none; color: rgba(250,250,247,0.85); }
-  footer a:hover { color: var(--gold); }
+  footer a:hover { color: var(--orange); }
   footer .brand { color: var(--paper); margin-bottom: 8px; }
 
   .wa-float {
@@ -168,10 +169,11 @@
 
 <header class="site">
   <div class="nav-row">
-    <div class="brand">Danny Mera <span>Autos</span></div>
+    <a class="brand" href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;"><img src="assets/logo-autodirecto-120.png" alt="AutoDirecto" style="width:36px;height:36px;border-radius:50%;">Auto<span>Directo</span></a>
     <nav class="links">
       <a href="#vender">Vender mi auto</a>
       <a href="#comprar">Comprar un auto</a>
+      <a href="autos.html">Autos disponibles</a>
       <a href="#como-funciona">Cómo funciona</a>
     </nav>
     <a class="btn-nav-wa" href="https://wa.me/56957938503?text=Hola%20Danny%2C%20quiero%20saber%20m%C3%A1s%20sobre%20autos" target="_blank" rel="noopener">WhatsApp</a>
@@ -270,7 +272,7 @@
 <footer>
   <div class="wrap">
     <div>
-      <div class="brand serif" style="font-size:18px;">Danny Mera Autos</div>
+      <div class="brand serif" style="font-size:18px;">Auto<span style="color:var(--orange)">Directo</span></div>
       <p>Consignación y venta de autos — Alerce, Puerto Montt</p>
     </div>
     <div>
