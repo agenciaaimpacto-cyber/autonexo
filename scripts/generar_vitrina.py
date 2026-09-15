@@ -44,6 +44,12 @@ FOTO_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 MAX_DIMENSION = 1600
 JPEG_QUALITY = 82
 
+WHATSAPP_POR_CIUDAD = {
+    "Puerto Montt": "56940130088",
+    "Punta Arenas": "56986912463",
+}
+WHATSAPP_DEFAULT = "56957938503"
+
 CAMPOS_REQUERIDOS = ["precio", "km", "anio", "descripcion"]
 ALIAS_CLAVES = {
     "año": "anio",
@@ -157,6 +163,7 @@ def procesar_auto(carpeta: Path, ciudad: str):
         "precio_raw": datos["precio"],
         "precio": formatear_precio(datos["precio"]),
         "descripcion": datos["descripcion"],
+        "whatsapp": WHATSAPP_POR_CIUDAD.get(ciudad, WHATSAPP_DEFAULT),
         "portada": fotos_web[0],
         "fotos": fotos_web,
         "orden": carpeta.stat().st_mtime,

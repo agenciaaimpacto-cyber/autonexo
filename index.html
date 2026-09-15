@@ -293,6 +293,31 @@
 
 <script id="autos-data" type="application/json">[
   {
+    "slug": "puerto-montt-toyota-hilux-d-cab",
+    "nombre": "Toyota Hilux D-Cab",
+    "ciudad": "Puerto Montt",
+    "anio": "2022",
+    "km_raw": "76000",
+    "km": "76.000 km",
+    "precio_raw": "25000000",
+    "precio": "$25.000.000",
+    "descripcion": "Camioneta confiable, potente y lista para trabajar o disfrutar. Motor 2.4 diésel, transmisión manual, color blanco. Único dueño, 3 llaves.",
+    "whatsapp": "56940130088",
+    "portada": "assets/autos/puerto-montt-toyota-hilux-d-cab/01.jpg",
+    "fotos": [
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/01.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/02.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/03.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/04.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/05.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/06.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/07.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/08.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/09.jpg",
+      "assets/autos/puerto-montt-toyota-hilux-d-cab/10.jpg"
+    ]
+  },
+  {
     "slug": "puerto-montt-renault-duster-dynamique-2-0",
     "nombre": "Renault Duster Dynamique 2.0",
     "ciudad": "Puerto Montt",
@@ -302,6 +327,7 @@
     "precio_raw": "3990000",
     "precio": "$3.990.000",
     "descripcion": "Motor 2.0. Detalles estéticos, mecánicamente 100% operativa. Valor solo contado.",
+    "whatsapp": "56940130088",
     "portada": "assets/autos/puerto-montt-renault-duster-dynamique-2-0/01.jpg",
     "fotos": [
       "assets/autos/puerto-montt-renault-duster-dynamique-2-0/01.jpg",
@@ -325,6 +351,7 @@
     "precio_raw": "8900000",
     "precio": "$8.900.000",
     "descripcion": "4x4, motor 1.5 diésel, transmisión automática. Señaleros en los espejos, todo funcionando y documentación al día.",
+    "whatsapp": "56986912463",
     "portada": "assets/autos/punta-arenas-mazda-cx-3-2017/01.jpg",
     "fotos": [
       "assets/autos/punta-arenas-mazda-cx-3-2017/01.jpg",
@@ -349,6 +376,7 @@
     "precio_raw": "6900000",
     "precio": "$6.900.000",
     "descripcion": "Motor 1.5 diésel, transmisión automática. Cámara de retroceso, todo funcionando y documentación al día. Precio conversable.",
+    "whatsapp": "56986912463",
     "portada": "assets/autos/punta-arenas-mazda-demio-2017/01.jpg",
     "fotos": [
       "assets/autos/punta-arenas-mazda-demio-2017/01.jpg",
@@ -369,6 +397,7 @@
     "precio_raw": "7800000",
     "precio": "$7.800.000",
     "descripcion": "Motor 1.5 bencinero, transmisión automática. Cámara de retroceso, todo funcionando y documentación al día. Precio conversable.",
+    "whatsapp": "56986912463",
     "portada": "assets/autos/punta-arenas-mazda-axela-sport-2016/01.jpg",
     "fotos": [
       "assets/autos/punta-arenas-mazda-axela-sport-2016/01.jpg",
@@ -390,6 +419,7 @@
     "precio_raw": "8200000",
     "precio": "$8.200.000",
     "descripcion": "Motor 2.5 diésel, transmisión mecánica. Volante original, todo funcionando y documentación al día. Precio conversable.",
+    "whatsapp": "56986912463",
     "portada": "assets/autos/punta-arenas-hyundai-porter-2010/01.jpg",
     "fotos": [
       "assets/autos/punta-arenas-hyundai-porter-2010/01.jpg",
@@ -412,6 +442,7 @@
     "precio_raw": "7800000",
     "precio": "$7.800.000",
     "descripcion": "Motor 1.5 bencinero, transmisión automática. Cámara y sensores de retroceso, volante original, documentación al día. Precio conversable.",
+    "whatsapp": "56986912463",
     "portada": "assets/autos/punta-arenas-chevrolet-trax-tracker-2014/01.jpg",
     "fotos": [
       "assets/autos/punta-arenas-chevrolet-trax-tracker-2014/01.jpg",
@@ -433,6 +464,7 @@
     "precio_raw": "17990000",
     "precio": "$17.990.000",
     "descripcion": "Versión Highline 4x4, motor diésel, transmisión automática, 170.000 km.",
+    "whatsapp": "56940130088",
     "portada": "assets/autos/puerto-montt-volkswagen-amarok-highline-4x4-2019/01.jpg",
     "fotos": [
       "assets/autos/puerto-montt-volkswagen-amarok-highline-4x4-2019/01.jpg",
@@ -544,7 +576,7 @@
     lbMeta.innerHTML = '<span>' + current.auto.ciudad + '</span><span>·</span><span>' + current.auto.anio + '</span><span>·</span><span>' + current.auto.km + '</span>';
     lbPrecio.textContent = current.auto.precio;
     lbDesc.textContent = current.auto.descripcion;
-    lbWa.href = 'https://wa.me/56957938503?text=' + encodeURIComponent('Hola, me interesa el ' + current.auto.nombre);
+    lbWa.href = 'https://wa.me/' + current.auto.whatsapp + '?text=' + encodeURIComponent('Hola, me interesa el ' + current.auto.nombre);
     lbThumbs.innerHTML = '';
     current.auto.fotos.forEach(function (foto, i) {
       var t = document.createElement('img');

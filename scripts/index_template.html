@@ -393,7 +393,7 @@
     lbMeta.innerHTML = '<span>' + current.auto.ciudad + '</span><span>·</span><span>' + current.auto.anio + '</span><span>·</span><span>' + current.auto.km + '</span>';
     lbPrecio.textContent = current.auto.precio;
     lbDesc.textContent = current.auto.descripcion;
-    lbWa.href = 'https://wa.me/56957938503?text=' + encodeURIComponent('Hola, me interesa el ' + current.auto.nombre);
+    lbWa.href = 'https://wa.me/' + current.auto.whatsapp + '?text=' + encodeURIComponent('Hola, me interesa el ' + current.auto.nombre);
     lbThumbs.innerHTML = '';
     current.auto.fotos.forEach(function (foto, i) {
       var t = document.createElement('img');
