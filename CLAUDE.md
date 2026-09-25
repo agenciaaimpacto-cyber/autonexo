@@ -153,5 +153,21 @@ Esto vive en `scripts/generar_vitrina.py` como `WHATSAPP_POR_CIUDAD` (dict ciuda
 
 **Auto nuevo agregado en la misma sesión:** Toyota Hilux D-Cab 2.4 (Puerto Montt) — $25.000.000, año 2022, 76.000 km, diésel, manual, único dueño, 3 llaves. Los datos venían en una captura de texto (no un flyer diseñado) que se usó solo para extraer las cifras, no se copió como foto. Portada elegida a mano (la foto "2.jpeg" original, renombrada a "portada.jpeg") porque la primera en orden alfabético era una foto de patio/bodega, no una buena toma del auto — mismo cuidado que ya se documentó antes con Suzuki Alto y Mazda CX-3.
 
+## Primera venta y expansión a consignación de terceros (25 de septiembre de 2026)
+
+**Primera venta cerrada:** $300.000 de comisión. A raíz de esto se abrió una oportunidad de **consignación de terceros** — una persona con 3 autos para vender contactó casi de inmediato. Danny está coordinando esto con su hermano (probablemente el mismo hermano que maneja Punta Arenas, ver "Plan de expansión" al principio de este archivo).
+
+**Mecánica de precio en consignación (clave para cualquier herramienta de precio que se construya):** el negocio gana en el margen entre lo que se le ofrece al dueño del auto y el precio de reventa — "el juego está en ofrecer el menor precio posible" al dueño, dejando espacio para el 2% que se lleva la automotora (ver mecánica de comisiones al principio del archivo) más la ganancia de Danny, sin ofrecer tan bajo que el dueño se vaya a otro lado.
+
+**Herramienta de precios: decidido NO construir una app/scraper.** Se evaluó automatizar la investigación de mercado (Yapo, ChileAutos, Demotores) pero se descartó por ahora — volumen bajo (pocos autos al mes) y los datos de mercado de usados son ruidosos (publicaciones duplicadas, precios "conversables" que no reflejan el valor real). El proceso queda **ad-hoc**: Danny pasa los datos del auto en el chat y Claude investiga el mercado en el momento para recomendar un precio de oferta. Reconsiderar solo si el volumen crece mucho.
+
+**Checklist de consignación (creado el 25 de septiembre de 2026):** para que el hermano de Danny sepa qué preguntarle al dueño de un auto antes de publicarlo. Vive en dos formatos:
+- [`checklist-consignacion.txt`](checklist-consignacion.txt) — fuente de texto plano, editable a mano.
+- [`checklist-consignacion.pdf`](checklist-consignacion.pdf) — versión con diseño de marca (logo, colores navy/naranja, casillas para marcar), generada con `scripts/generar_checklist_pdf.py` (usa la librería `fpdf2`, instalada vía pip en esta Mac). Para regenerar el PDF después de editar el contenido, actualizar la lista `SECTIONS` en ese script y correr `python3 scripts/generar_checklist_pdf.py` — sobrescribe el PDF completo.
+- Nota técnica: los fonts core de fpdf2 (Helvetica) solo soportan Latin-1 — funciona bien con tildes y ñ, pero **no acepta el guion largo "—"** (hay que usar "-" normal) ni otros caracteres fuera de Latin-1; si se agrega texto nuevo con símbolos raros, probar antes de asumir que renderiza.
+- El checklist cubre: datos básicos del auto, estado y uso, documentación (incluye chequeo de prenda/leasing — importante para no consignar autos con problemas legales), precio esperado por el dueño, fotos mínimas a pedir, y contacto del dueño — todo pensado para que lo que junte el hermano se pueda convertir directo en el `datos.txt` de `vehiculos/`.
+
+**Archivos sueltos en la raíz del proyecto, no relacionados con autos específicos:** `Condiciones Credito.png` y `condiciones credito.jpeg` son material de un socio de financiamiento (AUTOFIN — crédito automotriz, no seguros) que Danny dejó como referencia. No están en `vehiculos/`, no afectan el generador, y no se subieron al repo (no hay página de financiamiento en el sitio todavía). Si se decide agregar una sección de financiamiento al sitio más adelante, ahí está el material de referencia.
+
 ## Cómo seguir
 Al abrir una sesión de Claude Code en esta carpeta, este archivo da el contexto — se puede pedir directamente "seguimos con el proyecto de autos" y continuar desde acá. Si Danny confirma nombre de marca, si quiere nombrar alguna automotora específica (hoy explícitamente no se nombra ninguna), o si el número de WhatsApp cambia, actualizar este archivo.

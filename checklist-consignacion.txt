@@ -1,0 +1,55 @@
+CHECKLIST DE CONSIGNACIÓN — QUÉ PREGUNTARLE AL DUEÑO DEL AUTO
+================================================================
+(Para completar antes de publicar el auto en AutoNexo)
+
+DATOS BÁSICOS DEL AUTO
+-----------------------
+[ ] Marca, modelo y versión (ej: "Kia Sportage LX 2.0", no solo "Kia Sportage")
+[ ] Año
+[ ] Color
+[ ] Kilometraje actual
+[ ] Motor (cilindrada) y combustible (bencina, diésel, híbrido)
+[ ] Transmisión (manual o automática)
+[ ] Tracción (4x2 o 4x4, si aplica)
+
+ESTADO Y USO
+-----------------------
+[ ] ¿Cuántos dueños ha tenido? (único dueño pesa mucho en el precio)
+[ ] ¿Mantenciones al día? ¿En servicio técnico de la marca o mecánico particular?
+[ ] ¿Algún detalle estético (rayones, golpes, tapiz) o mecánico pendiente?
+    (mejor saberlo ahora que después)
+[ ] ¿Cuántas llaves tiene?
+[ ] ¿Todo funcionando? (aire acondicionado, alza vidrios, radio, etc.)
+
+DOCUMENTACIÓN
+-----------------------
+(importante — filtra problemas legales antes de avanzar)
+[ ] ¿Revisión técnica y permiso de circulación al día?
+[ ] ¿Tiene multas o deudas pendientes asociadas a la patente?
+[ ] ¿Está con prenda, leasing o crédito vigente sobre el auto?
+    (si sí, hay que resolverlo antes de vender)
+[ ] Patente (para verificar antecedentes si hace falta)
+
+PRECIO
+-----------------------
+[ ] ¿Cuánto espera recibir el dueño por el auto? (punto de partida para negociar)
+[ ] ¿Está dispuesto a conversar el precio, o es un mínimo fijo?
+
+FOTOS QUE NECESITAMOS PARA PUBLICAR (mínimo 6-8)
+-----------------------
+[ ] Frontal 3/4 (la más importante — suele ser la portada)
+[ ] Trasera 3/4
+[ ] Lateral completo
+[ ] Interior (asientos delanteros y volante)
+[ ] Tablero (mostrando el kilometraje)
+[ ] Motor
+[ ] Cualquier detalle o daño que tenga (mejor mostrarlo que ocultarlo)
+
+CONTACTO DEL DUEÑO
+-----------------------
+[ ] Nombre y teléfono (para coordinar la visita y el cierre — no se publica)
+[ ] Ciudad (Puerto Montt o Punta Arenas)
+
+================================================================
+Con todo esto completo, Danny arma la ficha del auto (datos.txt) y la
+recomendación de precio de oferta.
