@@ -13,6 +13,12 @@ del auto que se muestra en el sitio). Adentro de cada auto:
 Carpetas que empiezan con "." o "_" se ignoran (sirven para notas/plantillas),
 tanto a nivel de ciudad como de auto.
 
+Además procesa vendidos/ (carpeta plana, sin subcarpetas): cada foto ahí es
+la portada de un auto ya vendido, mostrada en una sección aparte del home
+sin galería ni datos — solo prueba social. El nombre del archivo define el
+nombre del auto y, opcionalmente, los días que tardó en venderse, con el
+patrón "Nombre del auto - N dias.jpg".
+
 Este script hace una reconstrucción completa cada vez: borra y regenera
 assets/autos/ e index.html a partir de lo que hay en vehiculos/ en este
 momento. Así, si se elimina una carpeta de auto, automáticamente desaparece
@@ -36,9 +42,13 @@ from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 VEHICULOS_DIR = ROOT / "vehiculos"
+VENDIDOS_DIR = ROOT / "vendidos"
 ASSETS_AUTOS_DIR = ROOT / "assets" / "autos"
+ASSETS_VENDIDOS_DIR = ROOT / "assets" / "vendidos"
 TEMPLATE_PATH = ROOT / "scripts" / "index_template.html"
 OUTPUT_PATH = ROOT / "index.html"
+
+RE_DIAS = re.compile(r"^(.*?)\s*-\s*(\d+)\s*d[ií]as?\s*$", re.IGNORECASE)
 
 FOTO_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 MAX_DIMENSION = 1600
@@ -170,6 +180,56 @@ def procesar_auto(carpeta: Path, ciudad: str):
     }
 
 
+def procesar_vendido(foto: Path):
+    m = RE_DIAS.match(foto.stem.strip())
+    if m:
+        nombre, dias = m.group(1).strip(), m.group(2)
+    else:
+        nombre, dias = foto.stem.strip(), None
+
+    slug = slugify(nombre)
+    destino = ASSETS_VENDIDOS_DIR / f"{slug}.jpg"
+    try:
+        procesar_foto(foto, destino)
+    except Exception as e:
+        print(f"  [AVISO] vendidos/'{foto.name}': no se pudo procesar ({e})")
+        return None
+
+    return {
+        "nombre": nombre,
+        "dias": dias,
+        "imagen": f"assets/vendidos/{slug}.jpg",
+        "orden": foto.stat().st_mtime,
+    }
+
+
+def procesar_vendidos():
+    if ASSETS_VENDIDOS_DIR.exists():
+        shutil.rmtree(ASSETS_VENDIDOS_DIR)
+    ASSETS_VENDIDOS_DIR.mkdir(parents=True)
+
+    if not VENDIDOS_DIR.exists():
+        return []
+
+    fotos = sorted(
+        f for f in VENDIDOS_DIR.iterdir()
+        if f.suffix.lower() in FOTO_EXTS and not f.name.startswith((".", "_"))
+    )
+
+    vendidos = []
+    for foto in fotos:
+        vendido = procesar_vendido(foto)
+        if vendido:
+            vendidos.append(vendido)
+            etiqueta = f"{vendido['dias']} día(s)" if vendido["dias"] else "sin días"
+            print(f"  [OK] vendidos/'{vendido['nombre']}' ({etiqueta})")
+
+    vendidos.sort(key=lambda v: v["orden"], reverse=True)
+    for v in vendidos:
+        del v["orden"]
+    return vendidos
+
+
 def main():
     if not VEHICULOS_DIR.exists():
         print(f"No existe la carpeta {VEHICULOS_DIR}")
@@ -205,16 +265,21 @@ def main():
     for auto in autos:
         del auto["orden"]
 
+    print("Revisando vendidos/...")
+    vendidos = procesar_vendidos()
+
     if not TEMPLATE_PATH.exists():
         print(f"Falta la plantilla {TEMPLATE_PATH}")
         sys.exit(1)
 
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     autos_json = json.dumps(autos, ensure_ascii=False, indent=2)
+    vendidos_json = json.dumps(vendidos, ensure_ascii=False, indent=2)
     salida = template.replace("__AUTOS_JSON__", autos_json)
+    salida = salida.replace("__VENDIDOS_JSON__", vendidos_json)
     OUTPUT_PATH.write_text(salida, encoding="utf-8")
 
-    print(f"\nListo: {len(autos)} auto(s) publicado(s) en {OUTPUT_PATH.name}")
+    print(f"\nListo: {len(autos)} auto(s) publicado(s), {len(vendidos)} vendido(s), en {OUTPUT_PATH.name}")
 
 
 if __name__ == "__main__":

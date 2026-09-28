@@ -169,5 +169,17 @@ Esto vive en `scripts/generar_vitrina.py` como `WHATSAPP_POR_CIUDAD` (dict ciuda
 
 **Archivos sueltos en la raíz del proyecto, no relacionados con autos específicos:** `Condiciones Credito.png` y `condiciones credito.jpeg` son material de un socio de financiamiento (AUTOFIN — crédito automotriz, no seguros) que Danny dejó como referencia. No están en `vehiculos/`, no afectan el generador, y no se subieron al repo (no hay página de financiamiento en el sitio todavía). Si se decide agregar una sección de financiamiento al sitio más adelante, ahí está el material de referencia.
 
+## Sección "Vendidos recientemente" (28 de septiembre de 2026)
+
+Idea de Danny para reforzar prueba social en el home: una grilla de solo fotos de portada (sin galería, sin datos.txt) de autos ya vendidos, con sello "VENDIDO" y, opcionalmente, cuántos días tardó en venderse.
+
+- **Carpeta nueva: `vendidos/`** (plana, sin subcarpetas por ciudad/auto — a diferencia de `vehiculos/`). Local, no se sube al repo (agregada a `.gitignore`), igual que `vehiculos/`. Instrucciones en [`vendidos/_LEEME.txt`](vendidos/_LEEME.txt).
+- **Convención de nombre de archivo:** `Nombre del auto - N dias.jpg` (ej: `Kia Sportage 2020 LX - 15 dias.jpg`) → se muestra "Kia Sportage 2020 LX" con el sello "Vendido en 15 días". Si se nombra el archivo sin el sufijo de días, igual aparece, solo que sin ese dato. Parseo con regex en `generar_vitrina.py` (`RE_DIAS`), tolera "dias" con o sin tilde.
+- El generador copia/optimiza cada foto a `assets/vendidos/<slug>.jpg` (mismo proceso de resize que `assets/autos/`) y arma un segundo JSON (`VENDIDOS`) embebido en `index.html`, separado del JSON de autos disponibles (`AUTOS`).
+- En `scripts/index_template.html`: la sección `#vendidos` **está oculta por defecto** (`display:none`) y solo se muestra si `VENDIDOS.length > 0` — así no aparece una sección vacía cuando no hay autos vendidos todavía (a diferencia de la sección de vehículos disponibles, que si muestra un estado vacío con CTA). Ubicada en el home entre "Vehículos disponibles" y el llamado a "¿Tienes un auto para vender?" — reforzando confianza justo antes de pedirle a alguien que consigne.
+- Las fotos se muestran con un filtro de saturación/brillo reducido (`filter: saturate(0.55) brightness(0.85)`) para diferenciarlas visualmente de las fotos de autos en venta.
+- Verificado end-to-end el 28 de septiembre de 2026 con dos casos de prueba (uno con días, uno sin) — funcionó correcto y se limpiaron los archivos de prueba antes de dejar `vendidos/` vacía para uso real.
+- Flujo de uso: cuando se vende un auto, Danny (1) elimina su carpeta de `vehiculos/<Ciudad>/<Auto>/` como siempre, y (2) por separado, si quiere que aparezca como prueba social, copia su portada a `vendidos/` con el nombre correspondiente. Son dos acciones independientes — sacarlo de `vehiculos/` no lo agrega automáticamente a `vendidos/`.
+
 ## Cómo seguir
 Al abrir una sesión de Claude Code en esta carpeta, este archivo da el contexto — se puede pedir directamente "seguimos con el proyecto de autos" y continuar desde acá. Si Danny confirma nombre de marca, si quiere nombrar alguna automotora específica (hoy explícitamente no se nombra ninguna), o si el número de WhatsApp cambia, actualizar este archivo.

@@ -153,6 +153,25 @@
   }
   .btn-primary:hover { background: var(--whatsapp-deep); }
 
+  /* Vendidos */
+  .vendidos-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  }
+  @media (min-width: 640px) { .vendidos-grid { grid-template-columns: repeat(4, 1fr); } }
+  .vendido-card { position: relative; border-radius: 14px; overflow: hidden; background: var(--navy-light); }
+  .vendido-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: saturate(0.55) brightness(0.85); display: block; }
+  .vendido-ribbon {
+    position: absolute; top: 10px; left: 10px; background: var(--orange); color: #fff;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase; padding: 4px 9px; border-radius: 999px;
+  }
+  .vendido-info {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 10px;
+    background: linear-gradient(0deg, rgba(4,21,42,0.85), rgba(4,21,42,0));
+  }
+  .vendido-nombre { color: #fff; font-size: 12.5px; font-weight: 600; line-height: 1.25; }
+  .vendido-dias { color: rgba(255,255,255,0.8); font-size: 11px; }
+
   /* Venta teaser */
   .sell-callout {
     background: var(--navy-dark); color: var(--paper); border-radius: 18px; padding: 32px;
@@ -243,6 +262,15 @@
       </div>
     </section>
 
+    <section id="vendidos" style="display:none;">
+      <div class="section-head">
+        <span class="eyebrow">Prueba social</span>
+        <h2>Vendidos recientemente</h2>
+        <p class="section-sub">Autos que ya encontraron dueño gracias a AutoNexo.</p>
+      </div>
+      <div id="vendidosGrid" class="vendidos-grid"></div>
+    </section>
+
     <section id="vender">
       <div class="sell-callout">
         <div>
@@ -292,8 +320,29 @@
 </div>
 
 <script id="autos-data" type="application/json">__AUTOS_JSON__</script>
+<script id="vendidos-data" type="application/json">__VENDIDOS_JSON__</script>
 <script>
   var AUTOS = JSON.parse(document.getElementById('autos-data').textContent);
+  var VENDIDOS = JSON.parse(document.getElementById('vendidos-data').textContent);
+
+  (function renderVendidos() {
+    if (!VENDIDOS.length) return;
+    var section = document.getElementById('vendidos');
+    var grid = document.getElementById('vendidosGrid');
+    VENDIDOS.forEach(function (v) {
+      var card = document.createElement('div');
+      card.className = 'vendido-card';
+      card.innerHTML =
+        '<img class="vendido-img" src="' + v.imagen + '" alt="' + v.nombre + '" loading="lazy">' +
+        '<span class="vendido-ribbon">Vendido</span>' +
+        '<div class="vendido-info">' +
+          '<div class="vendido-nombre">' + v.nombre + '</div>' +
+          (v.dias ? '<div class="vendido-dias">En ' + v.dias + ' día' + (v.dias == 1 ? '' : 's') + '</div>' : '') +
+        '</div>';
+      grid.appendChild(card);
+    });
+    section.style.display = 'block';
+  })();
   var gridContainer = document.getElementById('gridContainer');
   var empty = document.getElementById('empty');
   var cityTabsEl = document.getElementById('cityTabs');
