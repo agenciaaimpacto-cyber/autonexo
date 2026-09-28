@@ -1,12 +1,16 @@
 # Carpeta madre de fotos originales de autos — vive solo en este Mac.
 # El sitio usa las copias optimizadas generadas en assets/autos/, que sí
 # se suben al repo. Ver scripts/generar_vitrina.py y vehiculos/_LEEME.txt.
-vehiculos/
+# Nota: con "/" al inicio para que NO matchee assets/vendidos/ ni ninguna
+# otra carpeta con este nombre en otro nivel — sin la barra, git ignora
+# cualquier carpeta llamada así en cualquier profundidad (pasó el 28 de
+# septiembre de 2026: assets/vendidos/ quedaba ignorada por error).
+/vehiculos/
 
 # Portadas de autos vendidos (prueba social) — original sin optimizar, vive
 # solo en esta Mac. El sitio usa las copias en assets/vendidos/. Ver
 # vendidos/_LEEME.txt.
-vendidos/
+/vendidos/
 
 # Volcado original de fotos/logo/portada (WhatsApp/Facebook/ChatGPT) desde
 # el que se arma vehiculos/ y los assets de marca. Ya cumplió su función

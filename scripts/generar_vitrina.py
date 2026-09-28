@@ -53,7 +53,7 @@ ASSETS_VENDIDOS_DIR = ROOT / "assets" / "vendidos"
 TEMPLATE_PATH = ROOT / "scripts" / "index_template.html"
 OUTPUT_PATH = ROOT / "index.html"
 
-RE_DIAS = re.compile(r"^(.*?)\s*-\s*(\d+)\s*d[ií]as?\s*$", re.IGNORECASE)
+RE_DIAS = re.compile(r"^(.*?)\s*-?\s*(\d+)\s*d[ií]as?\s*$", re.IGNORECASE)
 
 FOTO_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 MAX_DIMENSION = 1600
