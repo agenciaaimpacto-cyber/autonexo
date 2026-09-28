@@ -22,3 +22,7 @@ Autodirecto/
 negocio autos.png
 
 .DS_Store
+
+# Videos de referencia (logo animado, etc.) — pesados, no se necesitan en el
+# repo. El sitio usa activos ya optimizados (imágenes/CSS), no el video en sí.
+*.mp4
