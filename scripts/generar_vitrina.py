@@ -19,6 +19,10 @@ sin galería ni datos — solo prueba social. El nombre del archivo define el
 nombre del auto y, opcionalmente, los días que tardó en venderse, con el
 patrón "Nombre del auto - N dias.jpg".
 
+También procesa testimonios/ (carpeta plana): cada .txt es un testimonio
+real de un cliente (nombre, texto, ciudad y auto opcionales) — nunca
+inventados. Se ignora cualquier archivo sin "nombre" o "texto".
+
 Este script hace una reconstrucción completa cada vez: borra y regenera
 assets/autos/ e index.html a partir de lo que hay en vehiculos/ en este
 momento. Así, si se elimina una carpeta de auto, automáticamente desaparece
@@ -43,6 +47,7 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parent.parent
 VEHICULOS_DIR = ROOT / "vehiculos"
 VENDIDOS_DIR = ROOT / "vendidos"
+TESTIMONIOS_DIR = ROOT / "testimonios"
 ASSETS_AUTOS_DIR = ROOT / "assets" / "autos"
 ASSETS_VENDIDOS_DIR = ROOT / "assets" / "vendidos"
 TEMPLATE_PATH = ROOT / "scripts" / "index_template.html"
@@ -230,6 +235,36 @@ def procesar_vendidos():
     return vendidos
 
 
+def procesar_testimonios():
+    if not TESTIMONIOS_DIR.exists():
+        return []
+
+    archivos = sorted(
+        f for f in TESTIMONIOS_DIR.iterdir()
+        if f.suffix.lower() == ".txt" and not f.name.startswith((".", "_"))
+    )
+
+    testimonios = []
+    for archivo in archivos:
+        datos = parsear_datos(archivo)
+        if not datos.get("nombre") or not datos.get("texto"):
+            print(f"  [SALTADO] testimonios/'{archivo.name}': falta nombre o texto")
+            continue
+        testimonios.append({
+            "nombre": datos["nombre"],
+            "ciudad": datos.get("ciudad", ""),
+            "auto": datos.get("auto", ""),
+            "texto": datos["texto"],
+            "orden": archivo.stat().st_mtime,
+        })
+        print(f"  [OK] testimonios/'{datos['nombre']}'")
+
+    testimonios.sort(key=lambda t: t["orden"], reverse=True)
+    for t in testimonios:
+        del t["orden"]
+    return testimonios
+
+
 def main():
     if not VEHICULOS_DIR.exists():
         print(f"No existe la carpeta {VEHICULOS_DIR}")
@@ -268,6 +303,9 @@ def main():
     print("Revisando vendidos/...")
     vendidos = procesar_vendidos()
 
+    print("Revisando testimonios/...")
+    testimonios = procesar_testimonios()
+
     if not TEMPLATE_PATH.exists():
         print(f"Falta la plantilla {TEMPLATE_PATH}")
         sys.exit(1)
@@ -275,11 +313,13 @@ def main():
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     autos_json = json.dumps(autos, ensure_ascii=False, indent=2)
     vendidos_json = json.dumps(vendidos, ensure_ascii=False, indent=2)
+    testimonios_json = json.dumps(testimonios, ensure_ascii=False, indent=2)
     salida = template.replace("__AUTOS_JSON__", autos_json)
     salida = salida.replace("__VENDIDOS_JSON__", vendidos_json)
+    salida = salida.replace("__TESTIMONIOS_JSON__", testimonios_json)
     OUTPUT_PATH.write_text(salida, encoding="utf-8")
 
-    print(f"\nListo: {len(autos)} auto(s) publicado(s), {len(vendidos)} vendido(s), en {OUTPUT_PATH.name}")
+    print(f"\nListo: {len(autos)} auto(s) publicado(s), {len(vendidos)} vendido(s), {len(testimonios)} testimonio(s), en {OUTPUT_PATH.name}")
 
 
 if __name__ == "__main__":

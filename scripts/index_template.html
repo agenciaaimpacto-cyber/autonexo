@@ -76,6 +76,14 @@
     background: var(--navy-dark); padding: 22px 24px 30px; text-align: center;
   }
   .hero-cta-wrap p { color: rgba(250,250,247,0.8); font-size: 15px; max-width: 560px; margin: 0 auto 16px; }
+  .stat-badge {
+    display: inline-flex; align-items: baseline; gap: 8px; background: rgba(243,85,1,0.12);
+    border: 1px solid var(--orange); border-radius: 999px; padding: 8px 20px; margin-bottom: 16px;
+    color: #fff; font-size: 14px; font-weight: 600;
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif; font-weight: 700; font-size: 24px; color: var(--orange);
+  }
   .btn-hero {
     display: inline-flex; align-items: center; gap: 10px; background: var(--orange); color: #fff;
     font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 999px; text-decoration: none;
@@ -172,6 +180,20 @@
   .vendido-nombre { color: #fff; font-size: 12.5px; font-weight: 600; line-height: 1.25; }
   .vendido-dias { color: rgba(255,255,255,0.8); font-size: 11px; }
 
+  /* Testimonios */
+  .testimonios-grid {
+    display: grid; grid-template-columns: 1fr; gap: 16px;
+  }
+  @media (min-width: 700px) { .testimonios-grid { grid-template-columns: repeat(3, 1fr); } }
+  .testimonio-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .testimonio-quote { color: var(--orange); font-family: 'Fraunces', serif; font-size: 30px; line-height: 1; }
+  .testimonio-texto { font-size: 14.5px; color: var(--ink); line-height: 1.5; flex: 1; }
+  .testimonio-autor { font-weight: 600; font-size: 14px; color: var(--navy-dark); }
+  .testimonio-meta { font-size: 12.5px; color: var(--ink-dim); }
+
   /* Venta teaser */
   .sell-callout {
     background: var(--navy-dark); color: var(--paper); border-radius: 18px; padding: 32px;
@@ -242,6 +264,10 @@
   <div class="hero-banner">
     <img class="hero-img" src="assets/hero-home.jpg" alt="AutoNexo — vende o compra tu auto sin complicaciones">
     <div class="hero-cta-wrap">
+      <div class="stat-badge" id="statBadge" style="display:none;">
+        <span class="stat-num" id="statNum">0</span>
+        <span id="statLabel">autos vendidos y contando</span>
+      </div>
       <p>Revisa los autos disponibles ahora mismo, con fotos, año, kilometraje y precio — o cuéntanos qué auto quieres vender.</p>
       <a class="btn-hero" href="#vehiculos">Vehículos disponibles ↓</a>
     </div>
@@ -269,6 +295,14 @@
         <p class="section-sub">Autos que ya encontraron dueño gracias a AutoNexo.</p>
       </div>
       <div id="vendidosGrid" class="vendidos-grid"></div>
+    </section>
+
+    <section id="testimonios" style="display:none;">
+      <div class="section-head">
+        <span class="eyebrow">Prueba social</span>
+        <h2>Lo que dicen nuestros clientes</h2>
+      </div>
+      <div id="testimoniosGrid" class="testimonios-grid"></div>
     </section>
 
     <section id="vender">
@@ -321,9 +355,18 @@
 
 <script id="autos-data" type="application/json">__AUTOS_JSON__</script>
 <script id="vendidos-data" type="application/json">__VENDIDOS_JSON__</script>
+<script id="testimonios-data" type="application/json">__TESTIMONIOS_JSON__</script>
 <script>
   var AUTOS = JSON.parse(document.getElementById('autos-data').textContent);
   var VENDIDOS = JSON.parse(document.getElementById('vendidos-data').textContent);
+  var TESTIMONIOS = JSON.parse(document.getElementById('testimonios-data').textContent);
+
+  (function renderStatBadge() {
+    if (!VENDIDOS.length) return;
+    document.getElementById('statNum').textContent = VENDIDOS.length;
+    document.getElementById('statLabel').textContent = (VENDIDOS.length === 1 ? 'auto vendido' : 'autos vendidos') + ' y contando';
+    document.getElementById('statBadge').style.display = 'inline-flex';
+  })();
 
   (function renderVendidos() {
     if (!VENDIDOS.length) return;
@@ -339,6 +382,24 @@
           '<div class="vendido-nombre">' + v.nombre + '</div>' +
           (v.dias ? '<div class="vendido-dias">En ' + v.dias + ' día' + (v.dias == 1 ? '' : 's') + '</div>' : '') +
         '</div>';
+      grid.appendChild(card);
+    });
+    section.style.display = 'block';
+  })();
+
+  (function renderTestimonios() {
+    if (!TESTIMONIOS.length) return;
+    var section = document.getElementById('testimonios');
+    var grid = document.getElementById('testimoniosGrid');
+    TESTIMONIOS.forEach(function (t) {
+      var meta = [t.ciudad, t.auto].filter(Boolean).join(' · ');
+      var card = document.createElement('div');
+      card.className = 'testimonio-card';
+      card.innerHTML =
+        '<div class="testimonio-quote">&ldquo;</div>' +
+        '<p class="testimonio-texto">' + t.texto + '</p>' +
+        '<div><div class="testimonio-autor">' + t.nombre + '</div>' +
+        (meta ? '<div class="testimonio-meta">' + meta + '</div>' : '') + '</div>';
       grid.appendChild(card);
     });
     section.style.display = 'block';

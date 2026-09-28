@@ -181,5 +181,18 @@ Idea de Danny para reforzar prueba social en el home: una grilla de solo fotos d
 - Verificado end-to-end el 28 de septiembre de 2026 con dos casos de prueba (uno con días, uno sin) — funcionó correcto y se limpiaron los archivos de prueba antes de dejar `vendidos/` vacía para uso real.
 - Flujo de uso: cuando se vende un auto, Danny (1) elimina su carpeta de `vehiculos/<Ciudad>/<Auto>/` como siempre, y (2) por separado, si quiere que aparezca como prueba social, copia su portada a `vendidos/` con el nombre correspondiente. Son dos acciones independientes — sacarlo de `vehiculos/` no lo agrega automáticamente a `vendidos/`.
 
+## Testimonios: solo reales, nunca inventados (28 de septiembre de 2026)
+
+Danny pidió agregar testimonios "inventándolos por ahora" — **se rechazó esa parte del pedido**. Publicar reseñas atribuidas a clientes que no existen es publicidad engañosa, el mismo tipo de práctica que el SERNAC persigue en el rubro financiero (ver los despachos de `noticias.html` en el proyecto de Seguros, varios son justo sobre esto). Se explicó el motivo y se ofreció construir la sección lista para usarse con testimonios reales — Danny no objetó.
+
+- **Carpeta `testimonios/`** (plana, en la raíz del proyecto) — a diferencia de `vehiculos/` y `vendidos/`, **esta SÍ se sube al repo** (no está en `.gitignore`): son archivos de texto chicos, no fotos pesadas, y el contenido ya es público por naturaleza (se muestra tal cual en el sitio). Instrucciones en [`testimonios/_LEEME.txt`](testimonios/_LEEME.txt).
+- Un archivo `.txt` por testimonio, formato `clave: valor` (mismo estilo que `datos.txt`): `nombre` y `texto` obligatorios, `ciudad` y `auto` opcionales. Si falta `nombre` o `texto`, el generador lo salta con aviso.
+- Sección oculta si no hay ninguno (mismo patrón que "Vendidos") — vive en `scripts/index_template.html` como `#testimonios`, entre "Vendidos recientemente" y el llamado a "¿Tienes un auto para vender?" (todo el bloque de prueba social agrupado antes del CTA de consignación).
+- **Si en el futuro Danny vuelve a pedir testimonios inventados o de apariencia genérica** (nombres tipo "Juan Pérez, Santiago" sin nada verificable), vale la pena repreguntar el motivo antes de escribirlos — la respuesta de esta sesión fue negarse y ofrecer la alternativa real, no fue algo que Danny insistiera en revertir.
+
+## Contador de autos vendidos (28 de septiembre de 2026)
+
+Badge naranja bien visible en el home, justo debajo de la imagen de portada (antes de cualquier otro texto) — "N auto(s) vendido(s) y contando". **Se calcula solo, contando los archivos reales en `vendidos/`** (no es un número separado que alguien deba acordarse de actualizar — mismo criterio de honestidad que con los testimonios: nunca inflar ni desincronizar la cifra de la realidad). Vive en `#statBadge` dentro de `scripts/index_template.html`, oculto si `vendidos/` está vacía. Si Danny algún día decide sacar fotos viejas de `vendidos/` para no alargar mucho esa grilla, hay que tener presente que el contador bajaría también — no hay lógica separada de "total histórico" vs. "mostrados en la grilla" todavía; si se necesita esa distinción, hay que construirla aparte.
+
 ## Cómo seguir
 Al abrir una sesión de Claude Code en esta carpeta, este archivo da el contexto — se puede pedir directamente "seguimos con el proyecto de autos" y continuar desde acá. Si Danny confirma nombre de marca, si quiere nombrar alguna automotora específica (hoy explícitamente no se nombra ninguna), o si el número de WhatsApp cambia, actualizar este archivo.

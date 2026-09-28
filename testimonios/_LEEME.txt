@@ -1,0 +1,25 @@
+CÓMO AGREGAR UN TESTIMONIO
+============================
+
+Solo testimonios reales de clientes — nunca inventados (ver CLAUDE.md,
+sección de testimonios, para el motivo).
+
+1. Crea un archivo de texto acá dentro, con cualquier nombre (ej:
+   "juan-perez.txt").
+
+2. Formato (una línea por dato, con ":" después de cada clave):
+
+     nombre: Juan Pérez
+     ciudad: Puerto Montt
+     auto: Kia Sportage 2020 LX
+     texto: Todo fue rápido y sin problemas, quedé muy conforme con la atención.
+
+   "ciudad" y "auto" son opcionales — si no los pones, simplemente no se
+   muestran. "nombre" y "texto" son obligatorios; si faltan, ese testimonio
+   se salta al generar el sitio.
+
+3. Para sacar un testimonio, elimina su archivo.
+
+4. Avísale a Claude ("actualiza el sitio") para que se publique.
+
+Archivos que empiecen con "." o "_" (como este) se ignoran.
