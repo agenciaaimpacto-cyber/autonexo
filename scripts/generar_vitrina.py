@@ -9,6 +9,8 @@ del auto que se muestra en el sitio). Adentro de cada auto:
   - datos.txt con líneas "clave: valor" (precio, km, anio, descripcion)
   - fotos (jpg/jpeg/png/webp) — la que se llame "portada.*" es la foto de
     portada; si no hay ninguna así, se usa la primera en orden alfabético.
+    Las capturas de pantalla usadas solo para extraer datos (nombradas
+    "Captura de Pantalla...") se ignoran — no entran a la galería pública.
 
 Carpetas que empiezan con "." o "_" se ignoran (sirven para notas/plantillas),
 tanto a nivel de ciudad como de auto.
@@ -137,7 +139,12 @@ def procesar_auto(carpeta: Path, ciudad: str):
         return None
 
     fotos_origen = sorted(
-        [f for f in carpeta.iterdir() if f.suffix.lower() in FOTO_EXTS],
+        [
+            f
+            for f in carpeta.iterdir()
+            if f.suffix.lower() in FOTO_EXTS
+            and not f.stem.lower().startswith("captura de pantalla")
+        ],
         key=lambda f: f.stem.lower(),
     )
     if not fotos_origen:
